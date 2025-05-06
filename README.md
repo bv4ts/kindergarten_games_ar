@@ -1,6 +1,6 @@
 # موقع ألعاب رياض الأطفال 🧸
 
-<img src="images/teddy-bear.png" alt="شعار دب الطفل" width="100" height="auto">
+<img src="images/teddy-bear.png" alt="شعار دب الطفل" width="300" height="auto">
 
 ## نظرة عامة 📚
 
