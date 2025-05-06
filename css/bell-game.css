@@ -1,0 +1,808 @@
+/**
+ * Bell Game Styles
+ * Color palette:
+ * - #3AAFB9 (Verdigris): Player 2 zone, word cards
+ * - #F46197 (Cyclamen): Player 1 zone, primary buttons
+ * - #F2F4FF (Ghost White): Background
+ */
+
+/* Base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Tajawal', sans-serif; /* Apply our custom font */
+}
+
+/* Section titles with TintaArabic font */
+.section-title {
+    font-size: 32px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    margin-bottom: 15px;
+    font-family: 'TintaArabic', 'Tajawal', sans-serif;
+}
+
+/* Global Game Styles */
+.game-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    background-color: #F2F4FF;
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    min-height: 500px;
+}
+
+.section {
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Setup Mode Styles */
+.setup-mode {
+    display: flex;
+}
+
+/* Words Section Styles */
+.words-section {
+    background-color: #3AAFB9;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.word-cards {
+    flex: 1;
+    background-color: white;
+    border-radius: 10px;
+    padding: 15px;
+    overflow-y: auto;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Increased gap between cards */
+    max-height: 350px; /* Limit height to enforce scrolling */
+}
+
+.word-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin-bottom: 0; /* Remove bottom margin, using gap instead */
+    position: relative; /* For proper positioning of buttons */
+}
+
+.word-text {
+    font-size: 24px;
+    color: #F46197;
+    margin-right: auto; /* Push text to the right */
+    font-family: 'TintaArabic', 'Tajawal', sans-serif;
+    flex-grow: 1;
+    text-align: right;
+    padding-left: 10px; /* Add some space to the left */
+}
+
+.word-image {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin: 0 10px;
+}
+
+.word-card .btn-group {
+    display: flex;
+    gap: 10px; /* Increased space between buttons */
+    margin-right: 10px; /* Add space from the right edge */
+}
+
+.edit-btn, .delete-btn, .emoji-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    border: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+}
+
+.edit-btn {
+    background-color: #FFD700;
+}
+
+.delete-btn {
+    background-color: #FF4500;
+}
+
+.emoji-btn {
+    background-color: #4CAF50;
+}
+
+.word-input-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.word-input-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+.word-input-button {
+    background-color: white;
+    color: #3AAFB9;
+    border: none;
+    border-radius: 10px;
+    padding: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+#wordInput {
+    padding: 15px;
+    border-radius: 10px;
+    border: none;
+    width: 100%;
+    text-align: right;
+    font-size: 16px;
+    font-family: 'TintaArabic', 'Tajawal', sans-serif;
+    background-color: white;
+}
+
+/* Settings Section Styles */
+.settings-section {
+    background-color: #3AAFB9;
+    width: 30%;
+    align-items: center;
+}
+
+.timer-setting {
+    background-color: #F2F4FF;
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+#timerInput {
+    width: 80px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 24px;
+    color: #3AAFB9;
+    font-weight: bold;
+    background-color: #F2F4FF;
+    font-family: 'LuckiestGuy', sans-serif;
+    letter-spacing: 1px;
+}
+
+.timer-setting label {
+    font-size: 24px;
+    color: #3AAFB9;
+    font-weight: bold;
+}
+
+.game-buttons {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 15px;
+}
+
+/* Start Section Styles */
+.start-section {
+    background-color: #F46197;
+    width: 30%;
+    justify-content: center;
+    align-items: center;
+}
+
+#startGameBtn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 36px;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: 'TintaArabic', 'Tajawal', sans-serif;
+}
+
+.play-icon {
+    font-size: 48px;
+    margin-top: 20px;
+}
+
+/* Button Styles */
+.btn {
+    padding: 12px 24px;
+    border-radius: 5px;
+    border: none;
+    font-weight: bold;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'TintaArabic', 'Tajawal', sans-serif;
+}
+
+.btn:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+.primary-btn {
+    background-color: #F46197;
+    color: white;
+}
+
+.secondary-btn {
+    background-color: white;
+    color: #3AAFB9;
+}
+
+.save-btn {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.load-btn {
+    background-color: #FFD700;
+    color: #333;
+}
+
+/* Countdown Overlay */
+.countdown-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    display: none;
+}
+
+.countdown-number {
+    font-size: 150px;
+    color: white;
+    animation: countdown-pulse 1s infinite alternate;
+}
+
+@keyframes countdown-pulse {
+    from {
+        transform: scale(1);
+        opacity: 1;
+    }
+    to {
+        transform: scale(1.2);
+        opacity: 0.7;
+    }
+}
+
+/* Bell Blink Animation */
+@keyframes bellBlink {
+    0% { 
+        transform: scale(1);
+        box-shadow: 0 0 0 rgba(255, 255, 255, 0.7);
+    }
+    50% { 
+        transform: scale(1.1);
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.9);
+    }
+    100% { 
+        transform: scale(1);
+        box-shadow: 0 0 0 rgba(255, 255, 255, 0.7);
+    }
+}
+
+/* Player Zone Blink Animation */
+@keyframes playerZoneBlink {
+    0% { 
+        opacity: 1;
+    }
+    50% { 
+        opacity: 0.7;
+    }
+    100% { 
+        opacity: 1;
+    }
+}
+
+.bell-blink {
+    animation: bellBlink 0.3s ease-in-out;
+}
+
+.player-zone-active {
+    animation: playerZoneBlink 0.8s ease-in-out infinite;
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.8);
+}
+
+/* Winner Animation - Enhanced */
+@keyframes winnerCelebration {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 rgba(255, 215, 0, 0);
+    }
+    25% {
+        transform: scale(1.1);
+        box-shadow: 0 0 50px rgba(255, 215, 0, 0.9);
+    }
+    50% {
+        transform: scale(1);
+        box-shadow: 0 0 80px rgba(255, 215, 0, 0.7);
+    }
+    75% {
+        transform: scale(1.1);
+        box-shadow: 0 0 50px rgba(255, 215, 0, 0.9);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 rgba(255, 215, 0, 0);
+    }
+}
+
+.winner-celebration {
+    animation: winnerCelebration 1.5s ease-in-out infinite;
+    position: relative;
+    overflow: visible !important;
+    z-index: 10;
+}
+
+/* Enhanced confetti effect for winner */
+.winner-celebration::before,
+.winner-celebration::after {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    animation: confetti 1.5s ease-in-out infinite;
+}
+
+.winner-celebration::before {
+    background-color: #FFD700;
+    top: -20px;
+    left: 20%;
+    animation-delay: 0.2s;
+}
+
+.winner-celebration::after {
+    background-color: #F46197;
+    top: -20px;
+    right: 20%;
+    animation-delay: 0.5s;
+}
+
+/* Additional confetti elements */
+.winner-celebration .confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    top: -30px;
+    animation: confetti 2s ease-in-out infinite;
+}
+
+@keyframes confetti {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(300px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Trophy icon for winner */
+.winner-trophy {
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 40px;
+    color: gold;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+    animation: trophyBounce 1s ease-in-out infinite alternate;
+    z-index: 20;
+}
+
+@keyframes trophyBounce {
+    from { transform: translateX(-50%) translateY(0); }
+    to { transform: translateX(-50%) translateY(-15px); }
+}
+
+/* Play Mode Styles */
+.play-mode {
+    display: none;
+}
+
+.player-zone {
+    width: 30%;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border-radius: 15px;
+}
+
+.player1-zone {
+    background-color: #F46197;
+}
+
+.player2-zone {
+    background-color: #3AAFB9;
+}
+
+.score {
+    position: absolute;
+    top: 20px;
+    font-size: 64px;
+    font-weight: bold;
+    color: white;
+    font-family: 'LuckiestGuy', sans-serif;
+    letter-spacing: 1px;
+}
+
+.bell-button {
+    width: 150px;
+    height: 150px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.1s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.bell-button:hover {
+    transform: scale(1.05);
+}
+
+.bell-button:active {
+    transform: scale(0.95);
+}
+
+.bell-button i {
+    font-size: 80px;
+    color: #555;
+    transition: all 0.2s ease;
+}
+
+/* Add different colors for each player's bell */
+.player1-zone .bell-button i {
+    color: #F46197; /* Pink for player 1 */
+}
+
+.player2-zone .bell-button i {
+    color: #3AAFB9; /* Blue for player 2 */
+}
+
+/* Animate the bell icon when clicked */
+.bell-button.bell-blink i {
+    transform: scale(1.2);
+    animation: bellRing 0.3s ease-in-out;
+}
+
+@keyframes bellRing {
+    0% { transform: rotate(0); }
+    20% { transform: rotate(15deg); }
+    40% { transform: rotate(-15deg); }
+    60% { transform: rotate(7deg); }
+    80% { transform: rotate(-7deg); }
+    100% { transform: rotate(0); }
+}
+
+.game-center {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.timer {
+    font-size: 64px;
+    font-weight: bold;
+    color: #3AAFB9;
+    font-family: 'LuckiestGuy', sans-serif;
+    letter-spacing: 1px;
+}
+
+.current-word-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.current-word {
+    font-size: 48px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    font-family: 'TintaArabic', 'Tajawal', sans-serif;
+}
+
+.current-image {
+    width: 200px;
+    height: 150px;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.current-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.game-controls {
+    display: flex;
+    gap: 15px;
+    margin: 20px 0;
+    background-color: rgba(0,0,0,0.1);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.control-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrong-btn {
+    background-color: #FF4500;
+    color: white;
+}
+
+.correct-btn {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.skip-btn {
+    background-color: #FFD700;
+    color: #333;
+}
+
+.exit-btn {
+    background-color: #FF4500;
+    color: white;
+    padding: 10px 30px;
+    border-radius: 5px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 18px;
+    font-family: 'TintaArabic', 'Tajawal', sans-serif;
+}
+
+/* Custom Alert Modal */
+.custom-alert-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.custom-alert-box {
+    background-color: #F46197;
+    border-radius: 15px;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+    max-width: 500px;
+    width: 90%;
+    animation: alertAppear 0.3s ease-out forwards;
+    overflow: hidden;
+}
+
+.custom-alert-content {
+    padding: 30px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+#customAlertMessage {
+    font-size: 22px;
+    color: white;
+    font-family: 'TintaArabic', 'Tajawal', sans-serif;
+    line-height: 1.6;
+}
+
+#customAlertOkBtn {
+    font-size: 18px;
+    padding: 10px 40px;
+    border-radius: 10px;
+    background-color: white;
+    color: #F46197;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'TintaArabic', 'Tajawal', sans-serif;
+}
+
+#customAlertOkBtn:hover {
+    transform: scale(1.05);
+    background-color: #f2f2f2;
+}
+
+@keyframes alertAppear {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Confirmation Dialog Styles */
+.confirm-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    width: 100%;
+}
+
+#customConfirmYesBtn, #customConfirmNoBtn {
+    padding: 12px 40px;
+    font-size: 20px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    background-color: #32B4C2;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-family: 'TintaArabic', 'Tajawal', sans-serif;
+    min-width: 100px;
+}
+
+#customConfirmYesBtn:hover, #customConfirmNoBtn:hover {
+    transform: scale(1.05);
+    background-color: #2a99a5;
+}
+
+/* Custom Alert Modal - Confirm Box */
+#customConfirm .custom-alert-box {
+    background-color: #F46197;
+    border-radius: 15px;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+    max-width: 500px;
+    width: 90%;
+    animation: alertAppear 0.3s ease-out forwards;
+    overflow: hidden;
+}
+
+#customConfirm .custom-alert-content {
+    padding: 30px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+#customConfirmMessage {
+    font-size: 22px;
+    color: white;
+    font-family: 'TintaArabic', 'Tajawal', sans-serif;
+    line-height: 1.6;
+}
+
+/* Custom Edit Word Dialog */
+#customEditWord .custom-alert-box {
+    background-color: #333;
+    border-radius: 15px;
+}
+
+#customEditTitle {
+    font-size: 22px;
+    color: white;
+    font-family: 'TintaArabic', 'Tajawal', sans-serif;
+    margin-bottom: 10px;
+}
+
+.custom-edit-input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #32B4C2;
+    border-radius: 10px;
+    background-color: #1a1a1a;
+    color: white;
+    font-size: 18px;
+    font-family: 'TintaArabic', 'Tajawal', sans-serif;
+    text-align: center;
+    direction: rtl;
+    margin-bottom: 15px;
+}
+
+.custom-edit-input:focus {
+    outline: none;
+    border-color: #F46197;
+    box-shadow: 0 0 8px rgba(244, 97, 151, 0.5);
+}
+
+#customEditOkBtn {
+    background-color: #32B4C2;
+    color: white;
+}
+
+#customEditCancelBtn {
+    background-color: #666;
+    color: white;
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .game-container {
+        flex-direction: column;
+    }
+    
+    .words-section, .settings-section, .start-section, 
+    .player1-zone, .game-center, .player2-zone {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}

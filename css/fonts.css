@@ -1,0 +1,28 @@
+/* Font-face declaration for TintaArabic font */
+@font-face {
+    font-family: 'TintaArabic';
+    src: url('../fonts/TintaArabic-Bold.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+/* Font-face declaration for LuckiestGuy font */
+@font-face {
+    font-family: 'LuckiestGuy';
+    src: url('../fonts/LuckiestGuy-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Use the font in your application */
+body {
+    font-family: 'TintaArabic', 'Tajawal', sans-serif;
+}
+
+/* Class for numeric elements */
+.numeric {
+    font-family: 'LuckiestGuy', sans-serif;
+    letter-spacing: 1px;
+}
+
+/* Rest of your existing CSS */
