@@ -1,0 +1,398 @@
+/* choose-correct-answer.css */
+/* Main container styles */
+.game-container {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 1200px;
+    background-color: #F2F4FF;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Sections styling */
+.section {
+    background-color: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+}
+
+.section-title {
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 24px;
+    text-align: center;
+    color: #3AAFB9;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px dashed #3AAFB9;
+}
+
+/* Start section styling */
+.start-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 20%;
+    height: 300px;
+}
+
+#startGameBtn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: #F46197;
+    color: white;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#startGameBtn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(244, 97, 151, 0.5);
+}
+
+.play-icon {
+    margin-top: 10px;
+}
+
+/* Settings section styling */
+.settings-section {
+    width: 25%;
+    min-height: 300px;
+}
+
+.timer-setting {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#timerInput {
+    width: 70px;
+    height: 40px;
+    text-align: center;
+    font-size: 18px;
+    border: 2px solid #3AAFB9;
+    border-radius: 8px;
+    margin-right: 10px;
+}
+
+.game-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.save-btn {
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.save-btn:hover {
+    background-color: #3e8e41;
+}
+
+.load-btn {
+    background-color: #FFD700;
+    color: #333;
+    font-weight: bold;
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.load-btn:hover {
+    background-color: #FFC400;
+}
+
+/* Words section styling */
+.words-section {
+    width: 45%;
+    min-height: 300px;
+}
+
+.word-lists-container {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 20px;
+}
+
+.word-list-section {
+    flex: 1;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 15px;
+    background-color: #f9f9f9;
+}
+
+.word-list-title {
+    text-align: center;
+    font-weight: bold;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 15px;
+}
+
+.word-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 300px;
+    overflow-y: auto;
+    margin-bottom: 15px;
+    padding-right: 5px;
+}
+
+.word-card {
+    background-color: white;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.word-card-image {
+    width: 100%;
+    height: 80px;
+    object-fit: contain;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.word-card-text {
+    text-align: center;
+    font-weight: bold;
+}
+
+.word-card-actions {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    display: flex;
+    gap: 5px;
+}
+
+.word-card-btn {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.edit-btn {
+    background-color: #FFD700;
+    color: #333;
+}
+
+.delete-btn {
+    background-color: #F46197;
+    color: white;
+}
+
+.move-btn {
+    background-color: #3AAFB9;
+    color: white;
+}
+
+.word-input-container {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+#correctWordInput, #excludedWordInput {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+}
+
+.word-add-btn {
+    width: 40px;
+    background-color: #3AAFB9;
+    color: white;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+
+.word-input-buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.word-input-button {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.word-input-button:hover {
+    background-color: #e0e0e0;
+}
+
+/* Play mode styling */
+.play-mode {
+    flex-direction: column;
+    width: 100%;
+    padding-top: 10px;
+}
+
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px 20px;
+    background-color: white;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.game-score, .game-timer {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.exit-btn {
+    background-color: #F46197;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.game-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 15px;
+    width: 100%;
+    padding: 10px;
+}
+
+.grid-item {
+    background-color: white;
+    border: 3px solid #F46197;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    height: 180px;
+}
+
+.grid-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.grid-item-image {
+    width: 100%;
+    height: 120px;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+.grid-item-text {
+    font-weight: bold;
+    text-align: center;
+    font-size: 18px;
+}
+
+.grid-item.correct {
+    border-color: #3AAFB9;
+}
+
+/* Countdown overlay */
+.countdown-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.countdown-number {
+    font-size: 150px;
+    color: white;
+    font-weight: bold;
+}
+
+/* Numeric class for right-to-left number display */
+.numeric {
+    direction: ltr;
+    display: inline-block;
+}
+
+/* Responsive design */
+@media (max-width: 992px) {
+    .game-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .section {
+        width: 90% !important;
+        margin-bottom: 20px;
+    }
+
+    .word-lists-container {
+        flex-direction: column;
+    }
+    
+    .game-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    .game-grid {
+        grid-template-columns: 1fr;
+    }
+}

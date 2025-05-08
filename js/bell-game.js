@@ -523,125 +523,106 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 1000);
     }
 
-    // Handle wrong answer
-    function handleWrongAnswer() {
-        if (gameState.activePlayer !== null) {
-            clearInterval(gameState.timerInterval);
-            
-            // Remove the blinking effect from player zones
-            document.querySelector('.player1-zone').classList.remove('player-zone-active');
-            document.querySelector('.player2-zone').classList.remove('player-zone-active');
-            
-            // Re-enable both bell buttons
-            player1Bell.classList.remove('disabled-bell');
-            player2Bell.classList.remove('disabled-bell');
-            player1Bell.style.opacity = '1';
-            player2Bell.style.opacity = '1';
-            player1Bell.style.cursor = 'pointer';
-            player2Bell.style.cursor = 'pointer';
-            
-            gameState.activePlayer = null;
-            gameState.currentWordIndex++;
-            
-            if (gameState.currentWordIndex < gameState.words.length) {
-                // Clear current content
-                currentWord.textContent = '';
-                currentImage.innerHTML = '';
-                
-                // Show next word after a short delay (1 second)
-                setTimeout(() => {
-                    displayCurrentWord();
-                    gameState.gameStarted = false; // Reset game started state to wait for bell press
-                    gameTimer.textContent = gameState.timer; // Reset timer display
-                }, 1000);
-            } else {
-                endGame();
-            }
-        }
-    }
-
     // Handle correct answer
     function handleCorrectAnswer() {
-        if (gameState.activePlayer !== null) {
-            clearInterval(gameState.timerInterval);
-            
-            // Update points
-            if (gameState.activePlayer === 1) {
-                gameState.player1Points++;
-                player1Score.textContent = gameState.player1Points;
-            } else {
-                gameState.player2Points++;
-                player2Score.textContent = gameState.player2Points;
-            }
-            
-            // Remove the blinking effect from player zones
-            document.querySelector('.player1-zone').classList.remove('player-zone-active');
-            document.querySelector('.player2-zone').classList.remove('player-zone-active');
-            
-            // Re-enable both bell buttons
-            player1Bell.classList.remove('disabled-bell');
-            player2Bell.classList.remove('disabled-bell');
-            player1Bell.style.opacity = '1';
-            player2Bell.style.opacity = '1';
-            player1Bell.style.cursor = 'pointer';
-            player2Bell.style.cursor = 'pointer';
-            
-            // Move to next word
-            gameState.activePlayer = null;
-            gameState.currentWordIndex++;
-            
-            if (gameState.currentWordIndex < gameState.words.length) {
-                // Clear current content
-                currentWord.textContent = '';
-                currentImage.innerHTML = '';
-                
-                // Show next word after a short delay (1 second)
-                setTimeout(() => {
-                    displayCurrentWord();
-                    gameState.gameStarted = false; // Reset game started state to wait for bell press
-                    gameTimer.textContent = gameState.timer; // Reset timer display
-                }, 1000);
-            } else {
-                endGame();
-            }
+        // Only allow if a player has rung the bell
+        if (gameState.activePlayer === null) {
+            return;
         }
+        
+        // Add point to active player
+        if (gameState.activePlayer === 1) {
+            gameState.player1Points++;
+            player1Score.textContent = gameState.player1Points;
+        } else {
+            gameState.player2Points++;
+            player2Score.textContent = gameState.player2Points;
+        }
+        
+        // Check if we've reached the end of words
+        if (gameState.currentWordIndex + 1 >= gameState.words.length) {
+            endGame();
+            return;
+        }
+        
+        // Ask if they want to continue to the next word
+        showContinueConfirmation();
     }
 
-    // Handle skip
-    function handleSkip() {
-        if (gameState.gameStarted) {
-            clearInterval(gameState.timerInterval);
-            
-            // Remove the blinking effect from player zones
-            document.querySelector('.player1-zone').classList.remove('player-zone-active');
-            document.querySelector('.player2-zone').classList.remove('player-zone-active');
-            
-            // Re-enable both bell buttons
-            player1Bell.classList.remove('disabled-bell');
-            player2Bell.classList.remove('disabled-bell');
-            player1Bell.style.opacity = '1';
-            player2Bell.style.opacity = '1';
-            player1Bell.style.cursor = 'pointer';
-            player2Bell.style.cursor = 'pointer';
-            
-            gameState.activePlayer = null;
-            gameState.currentWordIndex++;
-            
-            if (gameState.currentWordIndex < gameState.words.length) {
-                // Clear current content
-                currentWord.textContent = '';
-                currentImage.innerHTML = '';
-                
-                // Show next word after a short delay (1 second)
-                setTimeout(() => {
-                    displayCurrentWord();
-                    gameState.gameStarted = false; // Reset game started state to wait for bell press
-                    gameTimer.textContent = gameState.timer; // Reset timer display
-                }, 1000);
-            } else {
-                endGame();
-            }
+    // Handle wrong answer
+    function handleWrongAnswer() {
+        // Only allow if a player has rung the bell
+        if (gameState.activePlayer === null) {
+            return;
         }
+        
+        // Remove point from active player (ensure it doesn't go below 0)
+        if (gameState.activePlayer === 1) {
+            gameState.player1Points = Math.max(0, gameState.player1Points - 1);
+            player1Score.textContent = gameState.player1Points;
+        } else {
+            gameState.player2Points = Math.max(0, gameState.player2Points - 1);
+            player2Score.textContent = gameState.player2Points;
+        }
+        
+        // Check if we've reached the end of words
+        if (gameState.currentWordIndex + 1 >= gameState.words.length) {
+            endGame();
+            return;
+        }
+        
+        // Ask if they want to continue to the next word
+        showContinueConfirmation();
+    }
+
+    // Handle skipping the current word
+    function handleSkip() {
+        // Reset active player
+        resetActivePlayer();
+        
+        // Check if we've reached the end of words
+        if (gameState.currentWordIndex + 1 >= gameState.words.length) {
+            endGame();
+            return;
+        }
+        
+        // Ask if they want to continue to the next word
+        showContinueConfirmation();
+    }
+
+    // Shows the "Continue to iterate?" confirmation dialog
+    function showContinueConfirmation() {
+        // Pause the timer
+        if (gameState.timerInterval) {
+            clearInterval(gameState.timerInterval);
+            gameState.timerInterval = null;
+        }
+        
+        // Reset active player indicators
+        resetActivePlayer();
+        
+        // Show confirmation dialog
+        customConfirmMessage.textContent = "هل تريد الاستمرار إلى الكلمة التالية؟";
+        customConfirm.style.display = 'flex';
+        
+        // Set up the Yes button
+        customConfirmYesBtn.onclick = function() {
+            customConfirm.style.display = 'none';
+            // Advance to the next word
+            gameState.currentWordIndex++;
+            displayCurrentWord();
+            // Reset and start the timer
+            gameState.timeRemaining = gameState.timer;
+            gameTimer.textContent = gameState.timeRemaining;
+            startCountdown();
+        };
+        
+        // Set up the No button
+        customConfirmNoBtn.onclick = function() {
+            customConfirm.style.display = 'none';
+            // End the game
+            endGame();
+        };
     }
 
     // End the game
